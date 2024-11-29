@@ -12,6 +12,7 @@ class ManageGuru extends Component
     public $gurus, $nama, $email, $kelas_id, $guru_id;
     public $confirmingDelete = null; // Variabel untuk menyimpan ID guru yang akan dihapus
     public $filterKelas = ''; // Untuk menyimpan ID kelas yang dipilih untuk filter
+    public $displayMode = 'full';
     // Metode untuk merender komponen
     public function render()
     {
@@ -29,7 +30,8 @@ class ManageGuru extends Component
         // Kembalikan tampilan komponen dengan data kelas untuk dropdown filter dan pilihan kelas
         return view('livewire.guru.manage-guru', [
             'kelas' => Kelas::all(), // Mengambil semua data kelas untuk ditampilkan
-            'filterKelas' => $this->filterKelas // Untuk mempertahankan pilihan filter
+            'filterKelas' => $this->filterKelas, // Untuk mempertahankan pilihan filter
+            'displayMode' => $this->displayMode,
         ]);
     }
 

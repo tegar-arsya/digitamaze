@@ -9,14 +9,16 @@ class ManageKelas extends Component
 {
     public $kelases, $nama, $kelas_id; // Variabel untuk menyimpan data kelas, nama kelas, dan ID kelas
     public $confirmingDelete = null; // Variabel untuk menyimpan ID kelas yang akan dihapus
-
+    public $displayMode = 'full';
     // Metode untuk merender komponen
     public function render()
     {
         // Mengambil semua data kelas dari model Kelas
         $this->kelases = Kelas::all();
         // Mengembalikan tampilan komponen manage-kelas
-        return view('livewire.kelas.manage-kelas');
+        return view('livewire.kelas.manage-kelas', [
+            'displayMode' => $this->displayMode
+        ]);
     }
 
     // Metode untuk mereset input form

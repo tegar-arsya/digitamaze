@@ -1,5 +1,6 @@
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+        @if ($displayMode === 'full')
         <!-- Form untuk menambah data kelas -->
         <div class="p-6 bg-gray-50 border-b border-gray-200">
             <form wire:submit.prevent="store" class="flex space-x-4">
@@ -24,14 +25,16 @@
                 </button>
             </form>
         </div>
-
+        @endif
         <!-- Table untuk menampilkan data kelas -->
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
                     <tr class="bg-gray-100 text-gray-600 uppercase">
                         <th class="px-6 py-3 text-left font-semibold tracking-wider">Nama Kelas</th>
+                        @if ($displayMode === 'full')
                         <th class="px-6 py-3 text-right font-semibold tracking-wider">Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -41,6 +44,7 @@
                                 {{ $kelas->nama }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
+                                @if ($displayMode === 'full')
                                 <!-- Tombol Edit dan Hapus -->
                                 <div class="flex justify-end space-x-2">
                                     <button
@@ -54,6 +58,7 @@
                                         Hapus
                                     </button>
                                 </div>
+                                @endif
                             </td>
                         </tr>
                     @empty

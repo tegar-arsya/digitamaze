@@ -31,6 +31,7 @@
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         <!-- Form untuk menambah data guru -->
+        @if ($displayMode === 'full')
         <div class="p-6 bg-gray-50 border-b border-gray-200">
             <form wire:submit.prevent="store" class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -91,9 +92,11 @@
                 </div>
             </form>
         </div>
+        @endif
         <!-- Filter Section -->
         <div class="p-4 bg-gray-100 border-b border-gray-200 flex items-center justify-between">
             <div class="flex items-center space-x-4">
+                @if ($displayMode === 'full' || $displayMode === 'simple')
                 <label class="text-sm font-medium text-gray-700">Filter Kelas:</label>
                 <select wire:model.live="filterKelas"
                     class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -109,6 +112,7 @@
                         Reset Filter
                     </button>
                 @endif
+                @endif
             </div>
             <div class="text-sm text-gray-600">
                 Total Guru: {{ $gurus->count() }}
@@ -122,7 +126,9 @@
                         <th class="px-6 py-3 text-left font-semibold tracking-wider">Nama</th>
                         <th class="px-6 py-3 text-left font-semibold tracking-wider">Email</th>
                         <th class="px-6 py-3 text-left font-semibold tracking-wider">Kelas</th>
+                        @if ($displayMode === 'full')
                         <th class="px-6 py-3 text-right font-semibold tracking-wider">Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -132,6 +138,7 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ $guru->email }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $guru->kelas->nama }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
+                                @if ($displayMode === 'full')
                                 <!-- Tombol Edit dan Hapus -->
                                 <div class="flex justify-end space-x-2">
                                     <button
@@ -146,6 +153,7 @@
                                         Hapus
                                     </button>
                                 </div>
+                                @endif
                             </td>
                         </tr>
                     @empty

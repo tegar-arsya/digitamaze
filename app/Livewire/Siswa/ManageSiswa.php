@@ -13,6 +13,7 @@ class ManageSiswa extends Component
     public $confirmingDelete = null; // Variabel untuk menyimpan ID siswa yang akan dihapus
     // Variabel baru untuk filter kelas
     public $filterKelas = ''; // Untuk menyimpan ID kelas yang dipilih untuk filter
+    public $displayMode = 'full';
     // Metode untuk merender komponen
     public function render()
     {
@@ -30,7 +31,8 @@ class ManageSiswa extends Component
         // Kembalikan tampilan komponen dengan data kelas untuk dropdown filter dan pilihan kelas
         return view('livewire.siswa.manage-siswa', [
             'kelas' => Kelas::all(), // Semua kelas untuk dropdown
-            'filterKelas' => $this->filterKelas // Untuk mempertahankan pilihan filter
+            'filterKelas' => $this->filterKelas, // Untuk mempertahankan pilihan filter
+            'displayMode' => $this->displayMode,
         ]);
     }
 

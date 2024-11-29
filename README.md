@@ -42,5 +42,5 @@ Repository ini mencakup semua file yang diperlukan untuk menjalankan proyek ini,
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/username/project-management-sekolah.git
-cd project-management-sekolah
+git clone https://github.com/tegar-arsya/digitamaze.git
+cd digitamaze
